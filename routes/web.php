@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,17 +15,23 @@ use App\Http\Controllers\MovieController;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return redirect('/movie');
+});
 
-Route::get('/', [MovieController::class, 'getMovieShow']);
-Route::get('/movie-details/{id}', [MovieController::class, 'showMovieById']);
+Route::get('/movie', [MovieController::class, 'getMovieShow'])->name('movie.index');
+Route::get('/movie/detail/{id}', [MovieController::class, 'showMovieById'])->name('movie.show');
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [MovieController::class, 'createMovie'])->name('dashboard');
-    Route::post('/create-movie', [MovieController::class, 'createMoviePost']);
+    Route::get('/movie/create', [MovieController::class, 'createMovie'])->name('movie.store');
+    Route::post('/movie/create', [MovieController::class, 'createMoviePost']);
+    
+    Route::get('/movie/edit/{id}', [MovieController::class, 'editMovie'])->name('movie.edit');
+    Route::put('/movie/edit/{id}', [MovieController::class, 'updateMovie']);
+
+    Route::delete('/movie/delete/{id}', [MovieController::class, 'deleteMovie'])->name('movie.delete');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
