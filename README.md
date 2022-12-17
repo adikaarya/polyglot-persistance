@@ -1,4 +1,8 @@
 # Polyglot Persistance
+## Architecture
+
+![arsitektur](https://github.com/adikaarya/polyglot-persistance/blob/main/assets/arsitektur.png)
+
 ## Prerequisites
 
 -   PHP 8.x
