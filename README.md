@@ -1,7 +1,7 @@
 # Polyglot Persistance
 ## Architecture
 
-![arsitektur](https://github.com/adikaarya/polyglot-persistance/blob/main/assets/arsitektur.png)
+![arsitektur](https://github.com/mchraflir/polyglot-persistance/blob/main/assets/arsitektur.png)
 
 ## Prerequisites
 
